@@ -22,4 +22,28 @@ enum{
     A7 = 81,B7,C7,D7,E7,F7,G7,H7,
     A8 = 91,B8,C8,D8,E8,F8,G8,H8,NO_SQ
 };
+
+enum { FALSE, TRUE };
+
+typedef struct {
+    int pieces[BRD_SQ_NUM];
+    U64 pawns[3];
+
+    int KingSq[2];
+
+    int side;
+    int enPas;
+    int fiftyMove;
+
+    int ply;
+    int hisPly;
+
+    U64 posKey;
+
+    int pceNum[13];
+    int bigPce[3];
+    int majPce[3];
+    int minPce[3];
+}S_BOARD;
+
 #endif
