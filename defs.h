@@ -1,6 +1,23 @@
 #ifndef DEFS_H
 #define DEFS_H
 
+#include <stdlib.h>
+
+//#define DEBUG
+
+#ifndef DEBUG
+#define ASSERT(n)
+#else
+#define ASSERT(n) \
+if (!(n)){ \
+    printf("%s - Failded", #n); \
+    printf("On %s ", __DATE__); \
+    printf("At %s ", __TIME__); \
+    printf("In File %s ", __FILE__); \
+    printf("At Line %d\n", __LINE__); \
+    exit(1);} 
+#endif
+
 typedef unsigned long long U64;
 
 #define NAME "Vice 1.0"
@@ -58,6 +75,12 @@ typedef struct {
     int minPce[3];
 
     S_UNDO history[MAXGAMEMOVES];
+
+    //piece list
+    int pList[13][10];
+    
+    //pList[wN][0] = E1;
+    //pList[wN][1] = D4;  
 }S_BOARD;
 
 /* MACROS */
