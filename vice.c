@@ -10,17 +10,12 @@ int main(){
     playBitBoard |= (1ULL <<SQ64(D3));
     playBitBoard |= (1ULL <<SQ64(D4));
     
-    printf("\n");
-    PrintBitBoard(playBitBoard);
+    int sq64=0;
+    while (playBitBoard){
+        sq64 = POP(&playBitBoard);
+        printf("popped:%d\n", sq64);
+        PrintBitBoard(playBitBoard);
+    }
 
-    int count = CNT(playBitBoard);
-    
-    printf("Count:%d\n", count);
-    printf("\n");
-    int index = POP(&playBitBoard);
-    printf("index:%d\n", index);
-    PrintBitBoard(playBitBoard);
-    count = CNT(playBitBoard);
-    printf("Count:%d\n",count);
     return 0;
 }
