@@ -95,8 +95,12 @@ extern int Sq120ToSq64[BRD_SQ_NUM];
 extern int Sq64ToSq120[64]; 
 extern U64 SetMask[64];
 extern U64 ClearMask[64];
+extern U64 PieceKeys[13][120];
+extern U64 SideKey;
+extern U64 CastleKeys[16];
 
 /* FUNCTIONS */
+
 //init.c
 extern void AllInit();
 
@@ -104,5 +108,8 @@ extern void AllInit();
 extern void PrintBitBoard(U64 bb);
 extern int PopBit(U64 *bb);
 extern int CountBits(U64 b);
+
+//hashkeys.c
+extern U64 GeneratePosKey(const S_BOARD *pos);
 
 #endif
