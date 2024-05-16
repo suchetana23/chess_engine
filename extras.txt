@@ -1,0 +1,33 @@
+/* FOR vice.c printing the board numbers
+    int index; 
+    for (index=0;index<BRD_SQ_NUM;++index){
+        if (index%10==0) printf("\n");
+        printf("%5d", Sq120ToSq64[index]);
+    }
+
+    printf("\n");
+    printf("\n");
+
+    for (index=0;index<64;++index){
+        if(index%8==0)printf("\n");
+        printf("%5d", Sq64ToSq120[index]);
+    }
+*/
+int PieceOne = rand();
+    int PieceTwo = rand();
+    int PieceThree = rand();
+    int PieceFour = rand();
+
+    printf("PieceOne:%X\n", PieceOne);
+    printf("PieceTwo:%X\n", PieceTwo);
+    printf("PieceThree:%X\n", PieceThree);
+    printf("PieceFour:%X\n", PieceFour);
+
+    int Key = PieceOne ^ PieceTwo ^ PieceThree ^ PieceFour;
+    int TempKey = PieceOne;
+    TempKey ^= PieceTwo;
+    TempKey ^= PieceThree;
+    TempKey ^= PieceFour;
+
+    printf("Key:%X\n", Key);
+    printf("TempKey:%X\n", TempKey);

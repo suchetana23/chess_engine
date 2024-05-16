@@ -1,6 +1,7 @@
 // hashkeys.c
 
 #include "defs.h"
+#include <stdio.h>
 
 U64 GeneratePosKey(const S_BOARD *pos){
 
@@ -9,7 +10,7 @@ U64 GeneratePosKey(const S_BOARD *pos){
     int piece = EMPTY ;
 
     //pieces
-    for (sq = 0;sq< BRD_SQ_NUM; ++sq){
+    for (sq = 0;sq < BRD_SQ_NUM; ++sq){
         piece = pos->pieces[sq];
         if(piece!=NO_SQ && piece!=EMPTY){
             ASSERT(piece>=wP && piece<=bK);
