@@ -3,6 +3,34 @@
 #include <stdio.h>
 #include "defs.h"
 
+void UpdateListMaterial(S_BOARD *pos){
+    int piece,sq,index,colour;
+
+    for(index=0;index<BRD_SQ_NUM;++index){
+        sq=index;
+        piece = pos->pieces[index];
+        if(piece!=OFFBOARD && piece!= EMPTY){
+           colour = PieceCol[piece];
+
+           if(PieceBig[piece] == TRUE) pos->bigPce[colour]++; 
+           if(PieceMin[piece] == TRUE) pos->minPce[colour]++; 
+           if(PieceMaj[piece] == TRUE) pos->majPce[colour]++;
+
+           pos->material[colour] += PieceVal[piece];
+        
+           // piece list
+           // pList[wP][0] = a1;
+           // pList[wP][1] = a2;
+
+           pos->pList[piece][pos->pceNum[piece]] = sq;
+           pos->pceNum[piece]++;
+
+           if(piece == wK) pos->KingSq[WHITE] = sq;
+           if(piece == bK) pos->KingSq[BLACK] = sq;
+
+        }
+    }
+}
 int ParseFen(char *fen, S_BOARD *pos){
     ASSERT(fen!=NULL);
     ASSERT(pos!=NULL);
